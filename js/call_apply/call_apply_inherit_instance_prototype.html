@@ -4,26 +4,29 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>继承父类方法</title>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
   </head>
   <body>
     <script>
-      //http://web.jobbole.com/83642/#article-comment
-      function Fruits() {
-
+      function Fruits(name,color) {
+          this.name=name;
+          this.color=color;
       }
       Fruits.prototype={
-          color:'red',
           say:function () {
             console.log('this color is '+this.color)//this 总是指向被调用的对象
           }
       }
-      var f=new Fruits()//需要实例化
-      banana={
-          color:'yellow'
+      function banana(name,age) {
+          Fruits.call(this,name,age);
       }
-      f.say.call(banana);
+      var f=new Fruits();
+      banana.prototype= Object.create(Fruits.prototype)
+      //banana.prototype= Fruits.prototype
+      var b=new banana("b","yellow");
+
+      b.say()
     </script>
   </body>
 </html>

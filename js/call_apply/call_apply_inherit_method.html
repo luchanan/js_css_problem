@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>继承父类方法</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  </head>
+  <body>
+    <script>
+      //http://web.jobbole.com/83642/#article-comment
+      function Fruits() {
+
+      }
+      Fruits.prototype={
+          color:'red',
+          say:function () {
+            console.log('this color is '+this.color)//this 总是指向被调用的对象
+          }
+      }
+      var f=new Fruits()//需要实例化
+      banana={
+          color:'yellow'
+      }
+      // banana 继承 Fruits的say方法
+      // f.say.call(banana);
+      // 或者
+      f.say.apply(banana)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>继承父类方法</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  </head>
+  <body>
+    <script>
+      function Fruits(name,color) {
+          this.name=name;
+          this.color=color;
+      }
+      Fruits.prototype={
+          say:function () {
+            console.log('this color is '+this.color)//this 总是指向被调用的对象
+          }
+      }
+      function banana() {
+          // 继承Fruits   name 和 color
+          Fruits.call(this);
+      }
+      var b=new banana();
+      console.log(b)
+    </script>
+  </body>
+</html>
